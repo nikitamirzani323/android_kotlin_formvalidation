@@ -1,6 +1,8 @@
 package com.example.formvalidation
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -20,10 +22,12 @@ class MainActivity : ComponentActivity() {
         setContent {
             FormValidationTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    Log.i("padding",innerPadding.toString())
+//                    Greeting(
+//                        name = "Android",
+//                        modifier = Modifier.padding(innerPadding)
+//                    )
+                    HomeScreen(this,modifier = Modifier.padding(innerPadding))
                 }
             }
         }
