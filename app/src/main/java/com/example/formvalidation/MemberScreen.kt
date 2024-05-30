@@ -1,6 +1,6 @@
 package com.example.formvalidation
 
-import android.content.Context
+import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -12,10 +12,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.formvalidation.ui.theme.FormValidationTheme
 
-class MainActivity : ComponentActivity() {
+class MemberScreenActivity : ComponentActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -23,9 +22,22 @@ class MainActivity : ComponentActivity() {
             FormValidationTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Log.i("padding",innerPadding.toString())
-                    HomeScreen(this,modifier = Modifier.padding(innerPadding))
+                    MemberPage(
+                        this,
+                        name = "Member",
+                        modifier = Modifier.padding(innerPadding)
+                    )
+
                 }
             }
         }
     }
+}
+
+@Composable
+fun MemberPage(activity: Activity,name: String, modifier: Modifier = Modifier) {
+    Text(
+        text = "Hello $name!",
+        modifier = modifier
+    )
 }

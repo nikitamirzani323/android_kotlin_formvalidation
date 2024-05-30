@@ -1,6 +1,7 @@
 package com.example.formvalidation
 
 import android.content.Context
+import android.content.Intent
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -92,14 +93,15 @@ fun HomeScreen(context: Context,modifier: Modifier = Modifier){
         )
         Spacer(modifier = Modifier.height(10.dp))
         Button(onClick = {
-            if(username.value.isEmpty()){
-                Toast.makeText(context,"Please Enter username",Toast.LENGTH_SHORT).show()
-            }else if(password.value.isEmpty()){
-                Toast.makeText(context,"Please Enter password",Toast.LENGTH_SHORT).show()
-            }else{
-                Toast.makeText(context,"Validation Successfully Completed",Toast.LENGTH_SHORT).show()
-            }
-        }, modifier = Modifier.fillMaxWidth()) {
+                if(username.value.isEmpty()){
+                    Toast.makeText(context,"Please Enter username",Toast.LENGTH_SHORT).show()
+                }else if(password.value.isEmpty()){
+                    Toast.makeText(context,"Please Enter password",Toast.LENGTH_SHORT).show()
+                }else{
+                    val intent = Intent(context, MemberScreenActivity::class.java)
+                    context.startActivity(intent)
+                }
+            }, modifier = Modifier.fillMaxWidth()) {
             Text(text = "Login", fontSize = 18.sp, fontWeight = FontWeight.Bold)
         }
     }
