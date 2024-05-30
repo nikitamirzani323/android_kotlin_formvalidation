@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -23,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.sp
@@ -68,6 +70,7 @@ fun HomeScreen(context: Context,modifier: Modifier = Modifier){
         Spacer(modifier = Modifier.height(10.dp))
         OutlinedTextField(
             value = password.value,
+            singleLine = true,
             onValueChange = {password.value = it},
             label = {
                 Text(text = "Password")
@@ -80,6 +83,9 @@ fun HomeScreen(context: Context,modifier: Modifier = Modifier){
                                    contentDescription = null)
                            }
             },
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Password
+            ),
             visualTransformation = if(passvisibility) VisualTransformation.None
             else PasswordVisualTransformation(),
             modifier = Modifier.fillMaxWidth()
