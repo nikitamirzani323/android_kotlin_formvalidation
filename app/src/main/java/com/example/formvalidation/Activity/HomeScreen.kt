@@ -1,8 +1,10 @@
-package com.example.formvalidation
+package com.example.formvalidation.Activity
 
 import android.content.Context
 import android.content.Intent
 import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -30,6 +32,8 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.dp
+import com.example.formvalidation.Activity.Pages.MemberPage
+import com.example.formvalidation.R
 
 @Composable
 fun HomeScreen(context: Context,modifier: Modifier = Modifier){
@@ -46,6 +50,7 @@ fun HomeScreen(context: Context,modifier: Modifier = Modifier){
         painterResource(id = R.drawable.baseline_visibility_24)
     else
         painterResource(id = R.drawable.baseline_visibility_off_24)
+
 
     Column(
         modifier = modifier
@@ -98,8 +103,12 @@ fun HomeScreen(context: Context,modifier: Modifier = Modifier){
                 }else if(password.value.isEmpty()){
                     Toast.makeText(context,"Please Enter password",Toast.LENGTH_SHORT).show()
                 }else{
-                    val intent = Intent(context, MemberScreenActivity::class.java)
+
+                    val intent = Intent(context, MemberPage::class.java).apply {
+                        putExtra("username",username.value)
+                    }
                     context.startActivity(intent)
+
                 }
             }, modifier = Modifier.fillMaxWidth()) {
             Text(text = "Login", fontSize = 18.sp, fontWeight = FontWeight.Bold)

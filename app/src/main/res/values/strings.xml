@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">FormValidation</string>
     <string name="title_activity">Member</string>
+    <string name="title_activity_member_page">MemberPage</string>
 </resources>
